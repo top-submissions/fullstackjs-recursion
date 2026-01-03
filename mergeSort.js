@@ -40,3 +40,25 @@ function merge(left, right) {
 
   return result;
 }
+
+/**
+ * Sort an array using recursive merge sort
+ * @param {number[]} array - Array to sort
+ * @returns {number[]} Sorted array
+ */
+function mergeSort(array) {
+  // Base case: arrays with 0 or 1 elements are already sorted
+  if (array.length <= 1) {
+    return array;
+  }
+
+  // Divide: split array into two halves
+  const middle = Math.floor(array.length / 2);
+  const left = array.slice(0, middle);
+  const right = array.slice(middle);
+
+  // Conquer: recursively sort both halves and merge them
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+export { mergeSort };
